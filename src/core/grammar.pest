@@ -1,0 +1,24 @@
+WHITESPACE = _{ " " | "\t" | "\r" | "\n" }
+
+number = @{
+    "-"?
+    ~ ("0" | ASCII_NONZERO_DIGIT ~ ASCII_DIGIT*)
+}
+
+string = ${
+    \" ~ string_inner* ~ \"
+}
+
+string_inner = { !(\" | \\) ~ ANY | "\\\\" ~ ANY }
+
+allowed_punctuation = {
+    "_" | "-"
+}
+
+name = @{
+    (ASCII_ALPHA | allowed_punctuation) ~ (ASCII_ALPHANUMERIC | allowed_punctuation)*
+}
+
+expr = {
+    number | string | "(" ~ name? ~ expr* ~ ")"
+}

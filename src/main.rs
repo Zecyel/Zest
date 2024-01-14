@@ -1,7 +1,7 @@
 // #[path ="./util/stream.rs"]
 // pub mod stream;
 
-#[path = "./ast/ast.rs"]
+#[path = "./core/ast.rs"]
 pub mod ast;
 
 fn main() {
