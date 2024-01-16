@@ -1,10 +1,9 @@
 #[derive(Debug)]
 pub enum Expression {
+    Unit,
     Number(i64),
     String(String),
     // Symbol(String),
-    Expression {
-        operator: String,
-        operands: Vec<Expression>
-    }
+    Name(String),
+    Expression(Vec<Expression>)
 }

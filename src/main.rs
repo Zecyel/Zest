@@ -10,6 +10,6 @@ pub mod parser;
 
 fn main() {
     // println!("Hello, world!");
-    let a = "(hello (plus) (name 1 (1 2 3)))";
+    let a = "(hello (plus) (name 1 (1 2 3)) ())";
     println!("{:#?}", parser::parse_zest_file(a).expect("Error!"));
 }

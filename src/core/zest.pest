@@ -20,7 +20,7 @@ name = @{
 }
 
 expr = {
-    "(" ~ name? ~ (expr | number | string)* ~ ")"
+    "(" ~ (expr | number | string | name)* ~ ")"
 }
 
 zest = {
