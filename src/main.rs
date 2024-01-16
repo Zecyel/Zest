@@ -1,9 +1,15 @@
 // #[path ="./util/stream.rs"]
 // pub mod stream;
 
-#[path = "./core/ast.rs"]
-pub mod ast;
+extern crate pest;
+#[macro_use]
+extern crate pest_derive;
+
+#[path = "./core/parser.rs"]
+pub mod parser;
 
 fn main() {
-    println!("Hello, world!");
+    // println!("Hello, world!");
+    let a = "(hello (plus) (name 1 (1 2 3)))";
+    println!("{:#?}", parser::parse_zest_file(a).expect("Error!"));
 }

@@ -1,15 +1,15 @@
 WHITESPACE = _{ " " | "\t" | "\r" | "\n" }
 
-number = @{
+number = ${
     "-"?
     ~ ("0" | ASCII_NONZERO_DIGIT ~ ASCII_DIGIT*)
 }
 
 string = ${
-    \" ~ string_inner* ~ \"
+    "\"" ~ string_inner* ~ "\""
 }
 
-string_inner = { !(\" | \\) ~ ANY | "\\\\" ~ ANY }
+string_inner = { !("\"" | "\\") ~ ANY | "\\\\" ~ ANY }
 
 allowed_punctuation = {
     "_" | "-"
@@ -20,5 +20,9 @@ name = @{
 }
 
 expr = {
-    number | string | "(" ~ name? ~ expr* ~ ")"
+    "(" ~ name? ~ (expr | number | string)* ~ ")"
+}
+
+zest = {
+    SOI ~ expr ~ EOI
 }
